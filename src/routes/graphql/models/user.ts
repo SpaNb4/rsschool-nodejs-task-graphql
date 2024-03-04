@@ -1,22 +1,9 @@
-import { Static, Type } from '@fastify/type-provider-typebox';
+import { User } from '@prisma/client';
 import { GraphQLFloat, GraphQLList, GraphQLObjectType, GraphQLString } from 'graphql';
-import { userFields } from '../../users/schemas.js';
 import { Context } from '../types/context.js';
 import { UUIDType } from '../types/uuid.js';
 import { PostType } from './post.js';
 import { ProfileType } from './profile.js';
-
-const user = Type.Object(userFields);
-
-interface Subscriber {
-  subscriberId: string;
-  authorId: string;
-}
-
-export interface User extends Static<typeof user> {
-  userSubscribedTo?: Subscriber[];
-  subscribedToUser?: Subscriber[];
-}
 
 export const UserType = new GraphQLObjectType({
   name: 'User',

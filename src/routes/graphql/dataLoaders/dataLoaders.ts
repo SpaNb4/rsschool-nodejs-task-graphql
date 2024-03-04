@@ -1,9 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import { MemberType, Post, PrismaClient, Profile, User } from '@prisma/client';
 import DataLoader from 'dataloader';
-import { MemberType } from '../models/memberType.js';
-import { Post } from '../models/post.js';
-import { Profile } from '../models/profile.js';
-import { User } from '../models/user.js';
 
 export const getDataLoaders = (prisma: PrismaClient) => ({
   profilesLoader: new DataLoader(async (ids: readonly string[]) => {

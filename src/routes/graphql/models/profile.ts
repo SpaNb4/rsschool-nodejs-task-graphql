@@ -1,13 +1,8 @@
-import { Static, Type } from '@fastify/type-provider-typebox';
+import { Profile } from '@prisma/client';
 import { GraphQLBoolean, GraphQLInt, GraphQLObjectType } from 'graphql';
-import { profileFields } from '../../profiles/schemas.js';
 import { Context } from '../types/context.js';
 import { UUIDType } from '../types/uuid.js';
 import { MemberTypeIdEnum, MemberTypeType } from './memberType.js';
-
-const profile = Type.Object(profileFields);
-
-export type Profile = Static<typeof profile>;
 
 export const ProfileType = new GraphQLObjectType({
   name: 'Profile',
