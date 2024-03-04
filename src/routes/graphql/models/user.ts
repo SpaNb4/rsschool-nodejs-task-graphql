@@ -14,8 +14,8 @@ interface Subscriber {
 }
 
 export interface User extends Static<typeof user> {
-  userSubscribedTo: Subscriber[];
-  subscribedToUser: Subscriber[];
+  userSubscribedTo?: Subscriber[];
+  subscribedToUser?: Subscriber[];
 }
 
 export const UserType = new GraphQLObjectType({

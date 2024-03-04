@@ -1,5 +1,10 @@
+import { Static, Type } from '@fastify/type-provider-typebox';
 import { GraphQLEnumType, GraphQLFloat, GraphQLInt, GraphQLObjectType } from 'graphql';
-import { MemberTypeId } from '../../member-types/schemas.js';
+import { MemberTypeId, memberTypeFields } from '../../member-types/schemas.js';
+
+const memberType = Type.Object(memberTypeFields);
+
+export type MemberType = Static<typeof memberType>;
 
 export const MemberTypeIdEnum = new GraphQLEnumType({
   name: 'MemberTypeId',

@@ -7,7 +7,7 @@ import { MemberTypeIdEnum, MemberTypeType } from './memberType.js';
 
 const profile = Type.Object(profileFields);
 
-type Profile = Static<typeof profile>;
+export type Profile = Static<typeof profile>;
 
 export const ProfileType = new GraphQLObjectType({
   name: 'Profile',
