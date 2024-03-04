@@ -1,7 +1,7 @@
-import { GraphQLBoolean } from 'graphql';
 import { UserType } from '../../models/user.js';
 import { Context } from '../../types/context.js';
 import { UUIDType } from '../../types/uuid.js';
+import { Void } from '../../types/void.js';
 import {
   ChangeUserDto,
   ChangeUserInput,
@@ -26,7 +26,7 @@ export const userMutations = {
     },
   },
   deleteUser: {
-    type: GraphQLBoolean,
+    type: Void,
     args: {
       id: { type: UUIDType },
     },
@@ -78,7 +78,7 @@ export const userMutations = {
     },
   },
   unsubscribeFrom: {
-    type: GraphQLBoolean,
+    type: Void,
     args: {
       userId: { type: UUIDType },
       authorId: { type: UUIDType },
@@ -97,8 +97,6 @@ export const userMutations = {
           authorId: args.authorId,
         },
       });
-
-      return true;
     },
   },
 };
