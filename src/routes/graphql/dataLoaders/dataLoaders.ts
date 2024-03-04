@@ -64,6 +64,7 @@ export const getDataLoaders = (prisma: PrismaClient) => ({
       const subscribedAuthors = user.userSubscribedTo.map(
         (subscription) => subscription.author,
       );
+
       subscribedAuthorsMap.set(user.id, subscribedAuthors);
     });
 
@@ -79,13 +80,11 @@ export const getDataLoaders = (prisma: PrismaClient) => ({
     const subscribersMap = new Map<string, { id: string; name: string }[]>();
 
     usersWithSubs.forEach((user) => {
-      if (!subscribersMap.has(user.id)) {
-        subscribersMap.set(user.id, []);
-      }
+      const subscribers = user.subscribedToUser.map(
+        (subscription) => subscription.subscriber,
+      );
 
-      subscribersMap
-        .get(user.id)
-        ?.push(...user.subscribedToUser.map((sub) => sub.subscriber));
+      subscribersMap.set(user.id, subscribers);
     });
 
     return ids.map((id) => subscribersMap.get(id));
